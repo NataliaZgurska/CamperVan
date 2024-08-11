@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  padding: 24px 16px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: blue;
+  margin-top: 40px;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: blue;
+  background: linear-gradient(to right, #004ff9c7, #fff94cab, #004ff9c7);
+  border-radius: 30px;
+  height: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 704px;
+    height: 960px;
+    padding: 32px;
+  }
+
+  .title {
+    font-size: 48px;
+    margin-top: 100px;
+  }
+
+  .link {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1376px;
+    height: 736px;
+  }
+}
