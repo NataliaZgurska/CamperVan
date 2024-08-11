@@ -1,0 +1,45 @@
+.photoNameRange {
+  width: 172px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.photo {
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background-color: #f2f4f7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameRange {
+  width: 96px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 133%;
+  color: #101828;
+}
+
+.range {
+  display: flex;
+  flex-direction: row;
+}
+.reviewText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
+}

@@ -2,30 +2,14 @@ import React, { useState } from 'react';
 import { LuEuro } from 'react-icons/lu';
 import style from './CamperModal.module.css';
 import css from '../CamperItem/CamperItem.module.css';
-import CamperFeatures from '../CamperFeatures/CamperFeatures.jsx';
-import CamperReviewsList from '../CamperReviewsList/CamperReviewsList.jsx';
+import CamperFeatures from '../CamperFeatures/CamperFeatures';
+import CamperReviewsList from '../CamperReviewsList/CamperReviewsList';
+// import CamperFeatures from '../CamperFeatures/CamperFeatures.jsx';
+// import CamperReviewsList from '../CamperReviewsList/CamperReviewsList.jsx';
 
-const CamperModal = ({ camper, isOpen }) => {
-  const {
-    name,
-    price,
-    rating,
-    location,
-    adults,
-    children,
-    engine,
-    transmission,
-    form,
-    length,
-    width,
-    height,
-    tank,
-    consumption,
-    description,
-    details,
-    gallery,
-    reviews,
-  } = camper;
+const CamperModal = ({ camper }) => {
+  const { name, price, rating, location, description, gallery, reviews } =
+    camper;
 
   const [activeComponent, setActiveComponent] = useState('');
 
@@ -51,13 +35,13 @@ const CamperModal = ({ camper, isOpen }) => {
 
       <ul className={style.modalGalleryList}>
         <li className={style.modalGalleryListItem}>
-          <img src={gallery[0]} alt="camper photo" />
+          <img src={gallery[0]} alt="camper photo1" />
         </li>
         <li className={style.modalGalleryListItem}>
-          <img src={gallery[1]} alt="camper photo" />
+          <img src={gallery[1]} alt="camper photo2" />
         </li>
         <li className={style.modalGalleryListItem}>
-          <img src={gallery[2]} alt="camper photo" />
+          <img src={gallery[2]} alt="camper photo3" />
         </li>
       </ul>
 
@@ -81,9 +65,7 @@ const CamperModal = ({ camper, isOpen }) => {
       </div>
 
       <div>
-        {activeComponent === 'features' && (
-          <CamperFeatures camper={camper} isOpen={isOpen} />
-        )}
+        {activeComponent === 'features' && <CamperFeatures camper={camper} />}
         {activeComponent === 'reviews' && <CamperReviewsList camper={camper} />}
       </div>
     </div>

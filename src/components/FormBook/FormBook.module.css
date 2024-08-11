@@ -1,0 +1,82 @@
+.formContainer {
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 10px;
+  padding: 24px;
+  width: 448px;
+  height: 532px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formTitleWrap {
+  width: 400px;
+  height: 56px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+}
+
+.formTitleText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #475467;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formInput {
+  border: none;
+
+  border-radius: 10px;
+  padding: 18px;
+  width: 400px;
+  height: 56px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(16, 24, 40, 0.6);
+  background-color: #f7f7f7;
+}
+
+.formTexrarea {
+  border: none;
+  border-radius: 10px;
+  color: rgba(16, 24, 40, 0.6);
+  background-color: #f7f7f7;
+  padding: 18px;
+  width: 400px;
+  height: 114px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.formInput:checked,
+.formInput:hover,
+.formInput:focus .formTexrarea:checked,
+.formTexrarea:hover,
+.formTexrarea:focus {
+  outline: none;
+  border: 1px solid rgba(16, 24, 40, 0.6);
+}

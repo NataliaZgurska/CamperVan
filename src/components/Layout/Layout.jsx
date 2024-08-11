@@ -11,7 +11,21 @@ const Layout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-      <Toaster position="top-right" reverseOrder={false} />
+      {/* <Toaster position="top-right" reverseOrder={false} /> */}
+
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 4000,
+          style: {
+            border: '3px solid #32CD32',
+            background: '#98FB98',
+            color: 'black',
+            padding: '16px',
+          },
+        }}
+      />
     </div>
   );
 };

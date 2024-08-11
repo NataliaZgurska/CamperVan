@@ -1,9 +1,9 @@
 import React from 'react';
 import css from './CamperFeatures.module.css';
-import BoxOption from '../BoxOption/BoxOption.jsx';
-import FormBook from '../FormBook/FormBook.jsx';
+import FormBook from '../FormBook/FormBook';
+import BoxOption from '../BoxOption/BoxOption';
 
-const CamperFeatures = ({ camper, isOpen }) => {
+const CamperFeatures = ({ camper }) => {
   const { form, length, width, height, tank, consumption } = camper;
 
   let formType = '';
@@ -22,7 +22,7 @@ const CamperFeatures = ({ camper, isOpen }) => {
     <div className={css.featureFormContainer}>
       <div className={css.featuresContainer}>
         <div className={css.featuresOptions}>
-          <BoxOption camper={camper} isModalOpen={isOpen} />
+          <BoxOption camper={camper} />
         </div>
 
         <div className={css.featuresDetails}>

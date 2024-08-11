@@ -57,7 +57,7 @@ const CamperItem = ({ camper }) => {
             <BoxOption camper={camper} />
           </div>
 
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={openModal}>
             Show more
           </button>
 
