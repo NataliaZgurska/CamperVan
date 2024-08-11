@@ -3,7 +3,6 @@ import sprite from '../../assets/icons/icons.svg';
 import css from './BoxOption.module.css';
 import { useSelector } from 'react-redux';
 
-// , isModalOpen
 const BoxOption = ({ camper }) => {
   const { adults, transmission, engine, details } = camper;
   const modalIsActive = useSelector(state => state.modal.modalIsActive);

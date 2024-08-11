@@ -4,8 +4,6 @@ import style from './CamperModal.module.css';
 import css from '../CamperItem/CamperItem.module.css';
 import CamperFeatures from '../CamperFeatures/CamperFeatures';
 import CamperReviewsList from '../CamperReviewsList/CamperReviewsList';
-// import CamperFeatures from '../CamperFeatures/CamperFeatures.jsx';
-// import CamperReviewsList from '../CamperReviewsList/CamperReviewsList.jsx';
 
 const CamperModal = ({ camper }) => {
   const { name, price, rating, location, description, gallery, reviews } =
