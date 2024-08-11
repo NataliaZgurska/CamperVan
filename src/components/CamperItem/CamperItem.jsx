@@ -53,7 +53,6 @@ const CamperItem = ({ camper }) => {
           <p className={css.additionalInf}>{description}</p>
 
           <div className={css.optionsInf}>
-            {/* <BoxOption camper={camper} isModalOpen={modalIsOpen} /> */}
             <BoxOption camper={camper} />
           </div>
 

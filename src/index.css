@@ -91,3 +91,8 @@ body {
 .btn:hover {
   background-color: #d84343;
 }
+
+.btn:disabled {
+  background-color: gray;
+  color: black;
+}
