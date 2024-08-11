@@ -1,3 +1,3 @@
-export const selectCampers = state => state.adverts.campers;
-export const selectIsLoading = state => state.adverts.isLoading;
+// export const selectAdverts = state => state.adverts.adverts;
+export const selectStatus = state => state.adverts.status;
 export const selectError = state => state.adverts.error;

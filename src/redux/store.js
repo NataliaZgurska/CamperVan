@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { advertsReducer } from './advertsSlice';
+import { modalReducer } from './modalSlice';
+
 import {
   persistStore,
   persistReducer,
@@ -12,7 +14,7 @@ import {
 } from 'redux-persist';
 
 export const store = configureStore({
-  reducer: { adverts: advertsReducer },
+  reducer: { adverts: advertsReducer, modal: modalReducer },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
