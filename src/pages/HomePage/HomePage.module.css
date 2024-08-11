@@ -5,8 +5,6 @@
   display: grid;
   grid-template-columns: 70% 30%;
   grid-template-rows: 1fr;
-
-  /* background-color: wheat; */
 }
 
 .homePagePicture {
@@ -17,7 +15,6 @@
   background-position: left top;
   background-size: 100%;
   background-repeat: no-repeat;
-  /* background-attachment: fixed; */
   background-origin: padding-box;
   background-clip: content-box;
 }
