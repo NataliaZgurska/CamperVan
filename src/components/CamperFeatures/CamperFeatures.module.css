@@ -1,27 +1,14 @@
-.featureFormContainer {
-  width: 902px;
-  height: 532px;
-
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-}
-
 .featuresContainer {
-  width: 430px;
-  height: 530px;
   display: flex;
   flex-direction: column;
   gap: 44px;
 }
 
 .featuresOptions {
-  width: 430px;
   height: 200px;
 }
 
 .featuresDetails {
-  width: 430px;
   height: 286px;
 
   display: flex;
@@ -30,7 +17,6 @@
 }
 
 .detailsTitle {
-  width: 430px;
   height: 48px;
   border-bottom: 1px solid gray;
 
@@ -41,7 +27,6 @@
 }
 
 .detailsInfoWrap {
-  width: 430px;
   height: 214px;
 
   display: flex;

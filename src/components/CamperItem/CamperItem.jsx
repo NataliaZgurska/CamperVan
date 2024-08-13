@@ -28,7 +28,13 @@ const CamperItem = ({ camper }) => {
     <div>
       <div className={css.camperContainer}>
         <div className={css.imgContainer}>
-          <img src={gallery[0]} alt="camper photo" width={290} />
+          <img
+            src={gallery[0]}
+            alt="camper photo"
+            width={290}
+            height={310}
+            loading="lazy"
+          />
         </div>
 
         <div className={css.camperContext}>
@@ -56,12 +62,12 @@ const CamperItem = ({ camper }) => {
             <BoxOption camper={camper} />
           </div>
 
-          <button type="button" className="btn" onClick={openModal}>
+          <button type="button" className="btn red" onClick={openModal}>
             Show more
           </button>
 
           <CamperModalAdd
-            isOpen={modalIsOpen}
+            modalIsOpen={modalIsOpen}
             closeModal={closeModal}
             camper={camper}
           />

@@ -1,9 +1,9 @@
 import React from 'react';
 import staryellow from '../../assets/img/staryellow.png';
 import stargrey from '../../assets/img/stargrey.png';
-import css from './CamperReviews.module.css';
+import css from './CamperReviewItem.module.css';
 
-const CamperReviews = ({ review }) => {
+const CamperReviewItem = ({ review }) => {
   const { reviewer_name, reviewer_rating, comment } = review;
 
   const stars = Array.from({ length: 5 }, (_, index) =>
@@ -25,18 +25,18 @@ const CamperReviews = ({ review }) => {
   );
 
   return (
-    <div className={css.reviewsContainer}>
+    <div className={css.reviewContainer}>
       <div className={css.photoNameRange}>
         <div className={css.photo}>{reviewer_name[0].toUpperCase()}</div>
         <div className={css.nameRange}>
-          <div className={css.name}>{reviewer_name}</div>
+          <p className={css.name}>{reviewer_name}</p>
           <div className={css.range}>{stars}</div>
         </div>
       </div>
 
-      <div className={css.reviewText}>{comment}</div>
+      <p className={css.reviewText}>{comment}</p>
     </div>
   );
 };
 
-export default CamperReviews;
+export default CamperReviewItem;

@@ -10,16 +10,24 @@ const getNavLinkClassName = ({ isActive }) =>
 export const AppBar = () => {
   return (
     <header className={css.header}>
-      <nav className={css.navContainer}>
-        <NavLink to="/" className={getNavLinkClassName}>
-          Home
-        </NavLink>
-        <NavLink to="/catalog" className={getNavLinkClassName}>
-          Catalog
-        </NavLink>
-        <NavLink to="/favorites" className={getNavLinkClassName}>
-          Favorites
-        </NavLink>
+      <nav>
+        <ul className={css.navContainer}>
+          <li>
+            <NavLink to="/" className={getNavLinkClassName}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/catalog" className={getNavLinkClassName}>
+              Catalog
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/favorites" className={getNavLinkClassName}>
+              Favorites
+            </NavLink>
+          </li>
+        </ul>
       </nav>
     </header>
   );

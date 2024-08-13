@@ -1,3 +1,11 @@
+.reviewContainer {
+  height: 172px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .photoNameRange {
   width: 172px;
   height: 60px;
@@ -19,8 +27,6 @@
 }
 
 .nameRange {
-  width: 96px;
-  height: 44px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -38,6 +44,8 @@
   flex-direction: row;
 }
 .reviewText {
+  height: 96px;
+
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;

@@ -41,7 +41,7 @@ const CampersList = () => {
       )}
 
       {btnLoadMore && (
-        <button className="btn" onClick={handleLoadMore}>
+        <button className="btn white" onClick={handleLoadMore}>
           Load More
         </button>
       )}

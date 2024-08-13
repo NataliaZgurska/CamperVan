@@ -1,16 +1,4 @@
-.reviewsFormContainer {
-  width: 902px;
-  height: 532px;
-
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-}
-
 .reviewsContainer {
-  width: 430px;
-  height: 368px;
-
   display: flex;
   flex-direction: column;
   gap: 24px;

@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { LuEuro } from 'react-icons/lu';
-import style from './CamperModal.module.css';
-import css from '../CamperItem/CamperItem.module.css';
 import CamperFeatures from '../CamperFeatures/CamperFeatures';
 import CamperReviewsList from '../CamperReviewsList/CamperReviewsList';
+import { useSelector } from 'react-redux';
+import FormBook from '../FormBook/FormBook';
+
+import css from './CamperModal.module.css';
 
 const CamperModal = ({ camper }) => {
   const { name, price, rating, location, description, gallery, reviews } =
     camper;
 
-  const [activeComponent, setActiveComponent] = useState('');
+  const [activeComponent, setActiveComponent] = useState('features');
 
   return (
-    <div className={style.modalContainer}>
-      <div className={style.modalHeader}>
+    <div className={css.modalContainer}>
+      <div className={css.modalHeader}>
         <h2 className={css.title}>{name}</h2>
 
         <div className={css.modalRatingPrice}>
@@ -25,49 +27,104 @@ const CamperModal = ({ camper }) => {
           </div>
         </div>
 
-        <h2 className={style.modalPrice}>
+        <h2 className={css.modalPrice}>
           <LuEuro />
           {`${price}.00`}
         </h2>
       </div>
 
-      <ul className={style.modalGalleryList}>
-        <li className={style.modalGalleryListItem}>
-          <img src={gallery[0]} alt="camper photo1" />
+      <ul className={css.modalGalleryList}>
+        <li className={css.modalGalleryListItem}>
+          <img
+            src={gallery[0]}
+            width={290}
+            height={310}
+            alt="camper photo1"
+            loading="lazy"
+          />
         </li>
-        <li className={style.modalGalleryListItem}>
-          <img src={gallery[1]} alt="camper photo2" />
+        <li className={css.modalGalleryListItem}>
+          <img
+            src={gallery[1]}
+            width={290}
+            height={310}
+            alt="camper photo2"
+            loading="lazy"
+          />
         </li>
-        <li className={style.modalGalleryListItem}>
-          <img src={gallery[2]} alt="camper photo3" />
+        <li className={css.modalGalleryListItem}>
+          <img
+            src={gallery[2]}
+            width={290}
+            height={310}
+            alt="camper photo3"
+            loading="lazy"
+          />
         </li>
       </ul>
 
-      <div className={style.modalDescriptionFeaturesReviews}>
-        <p className={style.modalDescription}>{description}</p>
+      <div className={css.description}>
+        <p className={css.descriptionText}>{description}</p>
 
-        <div className={style.modalFeaturesReviews}>
+        <div className={css.featuresReviewsNavigation}>
           <button
-            className={style.modalFeaturesReviewsLink}
+            className={`${css.featuresReviewsLink} ${
+              activeComponent === 'features' ? css.active : ''
+            }`}
             onClick={() => setActiveComponent('features')}
           >
             Features
           </button>
           <button
-            className={style.modalFeaturesReviewsLink}
+            className={`${css.featuresReviewsLink} ${
+              activeComponent === 'reviews' ? css.active : ''
+            }`}
             onClick={() => setActiveComponent('reviews')}
           >
             Reviews
           </button>
         </div>
-      </div>
 
-      <div>
-        {activeComponent === 'features' && <CamperFeatures camper={camper} />}
-        {activeComponent === 'reviews' && <CamperReviewsList camper={camper} />}
+        <div className={css.featureReviewsForm}>
+          <div className={css.featureReviews}>
+            {activeComponent === 'features' && (
+              <CamperFeatures camper={camper} />
+            )}
+            {activeComponent === 'reviews' && (
+              <CamperReviewsList camper={camper} />
+            )}
+          </div>
+
+          <div className={css.form}>
+            <FormBook />
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default CamperModal;
+
+// <div className={css.featuresReviewsForm}>
+//   featuresReviewsForm
+{
+  /* <div>
+            {activeComponent === 'features' && (
+              <CamperFeatures camper={camper} />
+            )}
+            {activeComponent === 'reviews' && (
+              <CamperReviewsList camper={camper} />
+            )}
+          </div> */
+}
+{
+  /* <div className={css.featureReviews}>featureReviews</div>
+          <div className={css.form}>Form</div> */
+}
+{
+  /* <FormBook /> */
+}
+{
+  /* </div>; */
+}

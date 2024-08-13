@@ -1,24 +1,59 @@
 .modalContainer {
   width: 902px;
+  height: 1206px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 .modalHeader {
-  width: 902px;
   height: 110px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 125%;
+  color: #101828;
+}
+
 .modalRatingPrice {
-  width: 267px;
+  width: 324px;
   height: 70px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.ratingLocation {
+  height: 24px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #101828;
+}
+
+.rating {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.rating::before {
+  content: url('../../assets/img/staryellow.png');
+  margin-right: 4px;
+}
+
+.location::before {
+  content: url('../../assets/img/map-pin.png');
+  margin-right: 4px;
 }
 
 .modalPrice {
@@ -26,18 +61,20 @@
   font-size: 24px;
   line-height: 125%;
   color: #101828;
+
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .modalGalleryList {
-  width: 902px;
   height: 310px;
 
   display: flex;
   flex-direction: row;
   gap: 16px;
+
+  margin: 0 auto;
 }
 
 .modalGalleryListItem {
@@ -54,26 +91,27 @@
   object-position: -230px 10%;
 }
 
-.modalDescriptionFeaturesReviews {
+.description {
+  height: 738px;
+
   display: flex;
   flex-direction: column;
   gap: 44px;
 }
 
-.modalDescription {
+.descriptionText {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   color: #475467;
 
-  max-height: 78px;
+  max-height: 109px;
   white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.modalFeaturesReviews {
-  width: 902px;
+.featuresReviewsNavigation {
   height: 48px;
   border-bottom: 1px solid gray;
 
@@ -83,7 +121,9 @@
   align-items: start;
 }
 
-.modalFeaturesReviewsLink {
+.featuresReviewsLink {
+  width: 86px;
+  height: 46px;
   background: none;
   border: none;
   color: inherit;
@@ -95,13 +135,31 @@
   font-size: 20px;
   line-height: 120%;
   color: #101828;
+
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.modalFeaturesReviewsLink:focus,
-.modalFeaturesReviewsLink:hover {
-  text-decoration: underline;
+.featuresReviewsLink:focus,
+.featuresReviewsLink:hover {
+  border-bottom: 4px solid red;
 }
 
-.modalFeaturesReviewsLinkt:focus {
-  outline: none;
+.featuresReviewsLink.active {
+  border-bottom: 4px solid red;
+}
+
+.featureReviewsForm {
+  height: 530px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.featureReviews {
+  width: 430px;
+}
+.form {
+  width: 448px;
 }

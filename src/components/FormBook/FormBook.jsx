@@ -55,7 +55,7 @@ const FormBook = () => {
           ></textarea>
         </div>
 
-        <button type="submit" className="btn">
+        <button type="submit" className="btn red">
           Send
         </button>
       </form>
