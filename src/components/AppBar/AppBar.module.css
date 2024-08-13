@@ -3,6 +3,11 @@
   width: 100%;
   margin-bottom: 20px;
 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
   border-bottom: 1px solid #475467;
 }
 
@@ -10,6 +15,13 @@
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.navLogoHome {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
 }
 
 .navLink {
@@ -27,4 +39,11 @@
 .active {
   color: blue;
   text-decoration: underline;
+}
+
+.headerTel {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
 }
