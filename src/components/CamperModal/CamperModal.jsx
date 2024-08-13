@@ -38,7 +38,7 @@ const CamperModal = ({ camper }) => {
           <img
             src={gallery[0]}
             width={290}
-            height={310}
+            // height={310}
             alt="camper photo1"
             loading="lazy"
           />
@@ -47,7 +47,7 @@ const CamperModal = ({ camper }) => {
           <img
             src={gallery[1]}
             width={290}
-            height={310}
+            // height={310}
             alt="camper photo2"
             loading="lazy"
           />
@@ -56,7 +56,7 @@ const CamperModal = ({ camper }) => {
           <img
             src={gallery[2]}
             width={290}
-            height={310}
+            // height={310}
             alt="camper photo3"
             loading="lazy"
           />

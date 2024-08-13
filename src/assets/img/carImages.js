@@ -1,0 +1,15 @@
+export const imagesArrow = [
+  'https://ftp.goit.study/img/campers-test-task/1-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/2-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/3-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/4-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/5-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/6-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/7-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/8-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/9-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/10-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/11-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/12-1.webp',
+  'https://ftp.goit.study/img/campers-test-task/13-1.webp',
+];

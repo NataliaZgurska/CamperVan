@@ -32,7 +32,7 @@ const CamperItem = ({ camper }) => {
             src={gallery[0]}
             alt="camper photo"
             width={290}
-            height={310}
+            // height={310}
             loading="lazy"
           />
         </div>
