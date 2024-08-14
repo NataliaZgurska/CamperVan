@@ -7,11 +7,13 @@ import { updateModalIsActive } from '../../redux/modalSlice';
 import sprite from '../../assets/icons/icons.svg';
 import CamperModalAdd from '../CamperModalAdd/CamperModalAdd';
 
-const CamperItem = ({ camper }) => {
+const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
   const dispatch = useDispatch();
 
   const { name, price, rating, location, description, gallery, reviews } =
     camper;
+
+  const id = camper._id;
 
   // *****модальне вікно додаткової інформації****
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -48,9 +50,23 @@ const CamperItem = ({ camper }) => {
                   <LuEuro />
                   {price.toFixed(2)}
                 </h2>
-                <svg className="iconOption" width="24" height="24">
-                  <use href={`${sprite}#icon-heart`} />
-                </svg>
+
+                <button
+                  className={css.heartBtn}
+                  onClick={() => {
+                    toggleHeartClick(id);
+                  }}
+                >
+                  <svg
+                    className={`${css.heart} ${
+                      isFavorite ? css.redHeart : css.whiteHeart
+                    }`}
+                    width="24"
+                    height="24"
+                  >
+                    <use href={`${sprite}#icon-heart`} />
+                  </svg>
+                </button>
               </div>
             </div>
 

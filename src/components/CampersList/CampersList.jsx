@@ -28,13 +28,36 @@ const CampersList = () => {
     setPage(prevPage => prevPage + 1);
   };
 
+  // *********** FavoritesCheck *************
+  const [favs, setFavs] = useState([]);
+
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavs(storedItems);
+  }, []);
+
+  const toggleHeartClick = id => {
+    let updatedItems;
+    if (favs.includes(id)) {
+      updatedItems = favs.filter(itemId => itemId !== id);
+    } else {
+      updatedItems = [...favs, id];
+    }
+    setFavs(updatedItems);
+    localStorage.setItem('favorites', JSON.stringify(updatedItems));
+  };
+
   return (
     <div className={css.campersListContainer}>
       {adverts && (
         <ul className={css.campersList}>
           {adverts.map(advert => (
             <li key={advert._id}>
-              <CamperItem camper={advert} />
+              <CamperItem
+                camper={advert}
+                toggleHeartClick={toggleHeartClick}
+                isFavorite={favs.includes(advert._id)}
+              />
             </li>
           ))}
         </ul>
