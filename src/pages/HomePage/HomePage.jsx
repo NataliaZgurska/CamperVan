@@ -33,14 +33,16 @@ const HomePage = () => {
   return (
     <div className={css.homePageContainer}>
       <div className={css.homePageTextWrap}>
-        <div className={css.homePageTitle}>
-          <img src={logo} alt="logo" width="60px" height="60px" />
-          <h1>СampersPark </h1>
-        </div>
+        <div className={css.homePageTiileWrap}>
+          <div className={css.homePageTitle}>
+            <img src={logo} alt="logo" width="60px" height="60px" />
+            <h1>СampersPark </h1>
+          </div>
 
-        <h2 className={css.homePageText2}>
-          будинки на колесах, в яких хочеться жити
-        </h2>
+          <h2 className={css.homePageText2}>
+            будинки на колесах, в яких хочеться жити
+          </h2>
+        </div>
 
         <div className={css.homePageQuestions}>
           <p>
@@ -55,7 +57,9 @@ const HomePage = () => {
         </div>
 
         <h2 className={css.homePageText3}>
-          Все це можна влаштувати з СampersPark, взявши трейлер в оренду!
+          Все це можна влаштувати з
+          <span className={css.titleText}> CampersPark</span>, взявши трейлер в
+          оренду!
         </h2>
 
         <NavLink className={getNavLinkClassName} to="/catalog">
