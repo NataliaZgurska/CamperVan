@@ -4,6 +4,7 @@ import BoxOption from '../BoxOption/BoxOption';
 import css from './CamperItem.module.css';
 import { useDispatch } from 'react-redux';
 import { updateModalIsActive } from '../../redux/modalSlice';
+import sprite from '../../assets/icons/icons.svg';
 import CamperModalAdd from '../CamperModalAdd/CamperModalAdd';
 
 const CamperItem = ({ camper }) => {
@@ -41,10 +42,16 @@ const CamperItem = ({ camper }) => {
           <div className={css.titleInf}>
             <div className={css.titlePrice}>
               <h2 className={css.title}>{name}</h2>
-              <h2 className={css.priceHeart}>
-                <LuEuro />
-                {`${price}.00`}
-              </h2>
+
+              <div className={css.priceHeartWrap}>
+                <h2 className={css.price}>
+                  <LuEuro />
+                  {price.toFixed(2)}
+                </h2>
+                <svg className="iconOption" width="24" height="24">
+                  <use href={`${sprite}#icon-heart`} />
+                </svg>
+              </div>
             </div>
 
             <div className={css.ratingLocation}>

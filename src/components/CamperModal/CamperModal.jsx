@@ -105,26 +105,3 @@ const CamperModal = ({ camper }) => {
 };
 
 export default CamperModal;
-
-// <div className={css.featuresReviewsForm}>
-//   featuresReviewsForm
-{
-  /* <div>
-            {activeComponent === 'features' && (
-              <CamperFeatures camper={camper} />
-            )}
-            {activeComponent === 'reviews' && (
-              <CamperReviewsList camper={camper} />
-            )}
-          </div> */
-}
-{
-  /* <div className={css.featureReviews}>featureReviews</div>
-          <div className={css.form}>Form</div> */
-}
-{
-  /* <FormBook /> */
-}
-{
-  /* </div>; */
-}
