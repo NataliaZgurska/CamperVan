@@ -109,6 +109,30 @@
 .priceHeartWrap {
   display: flex;
   flex-direction: row;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
+}
+
+.heartBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.heart {
+  stroke: #101828;
+  fill: white;
+  transition: fill 0.1s ease;
+}
+.heartBtn:hover .heart {
+  stroke: blue;
+}
+
+.heart.whiteHeart {
+  fill: white;
+}
+.heart.redHeart {
+  stroke: none;
+  fill: red;
 }
