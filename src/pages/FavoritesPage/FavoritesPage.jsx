@@ -3,14 +3,14 @@ import sprite from '../../assets/icons/icons.svg';
 import css from './FavoritesPage.module.css';
 
 const FavoritesPage = () => {
-  const [favs, setFavs] = useState([]);
+  // const [favs, setFavs] = useState([]);
 
-  useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavs(storedItems);
-  }, []);
+  // useEffect(() => {
+  //   const storedItems = JSON.parse(localStorage.getItem('favorites')) || [];
+  //   setFavs(storedItems);
+  // }, []);
 
-  console.log(favs);
+  // console.log(favs);
 
   return (
     <>
@@ -23,22 +23,6 @@ const FavoritesPage = () => {
           and save them on this page
         </h2>
       </div>
-
-      {/* <div>
-        {favs && (
-          <ul>
-            {favs.map(advert => (
-              <li key={advert._id}>
-                <FavoriteItem
-                  camper={advert}
-                  toggleHeartClick={toggleHeartClick}
-                  isFavorite={favs.includes(advert._id)}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div> */}
     </>
   );
 };

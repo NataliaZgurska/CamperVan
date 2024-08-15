@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { advertsReducer } from './advertsSlice';
 import { modalReducer } from './modalSlice';
 import { favoriteReducer } from './favorites';
 
@@ -14,9 +13,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 
+import { campersReducer } from './campers/campersSlice';
+
 export const store = configureStore({
   reducer: {
-    adverts: advertsReducer,
+    campers: campersReducer,
     modal: modalReducer,
     favorite: favoriteReducer,
   },

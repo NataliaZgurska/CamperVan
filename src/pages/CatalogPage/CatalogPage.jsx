@@ -6,9 +6,10 @@ import Filters from '../../components/Filters/Filters.jsx';
 import CampersList from '../../components/CampersList/CampersList.jsx';
 
 import css from './CatalogPage.module.css';
+import { selectIsLoading } from '../../redux/campers/campersSelectors.js';
 
 const CatalogPage = () => {
-  const isLoading = useSelector(state => state.adverts.isLoading);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <div>

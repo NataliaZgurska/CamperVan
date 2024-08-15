@@ -7,7 +7,7 @@ import { updateModalIsActive } from '../../redux/modalSlice';
 import sprite from '../../assets/icons/icons.svg';
 import CamperModalAdd from '../CamperModalAdd/CamperModalAdd';
 
-const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
+const CamperItem = ({ camper }) => {
   const dispatch = useDispatch();
 
   const { name, price, rating, location, description, gallery, reviews } =
@@ -53,17 +53,11 @@ const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
 
                 <button
                   className={css.heartBtn}
-                  onClick={() => {
-                    toggleHeartClick(id);
-                  }}
+                  // onClick={() => {
+                  //   toggleHeartClick(id);
+                  // }}
                 >
-                  <svg
-                    className={`${css.heart} ${
-                      isFavorite ? css.redHeart : css.whiteHeart
-                    }`}
-                    width="24"
-                    height="24"
-                  >
+                  <svg className={css.heart} width="24" height="24">
                     <use href={`${sprite}#icon-heart`} />
                   </svg>
                 </button>
@@ -101,3 +95,15 @@ const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
 };
 
 export default CamperItem;
+
+// const CamperItem = { camper, toggleHeartClick, isFavorite };
+
+// <svg
+//   className={`${css.heart} ${
+//     isFavorite ? css.redHeart : css.whiteHeart
+//   }`}
+//   width="24"
+//   height="24"
+// >
+//   <use href={`${sprite}#icon-heart`} />
+// </svg>;

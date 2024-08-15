@@ -58,7 +58,7 @@ const HomePage = () => {
 
         <h2 className={css.homePageText3}>
           Все це можна влаштувати з
-          <span className={css.titleText}> CampersPark</span>, взявши трейлер в
+          <span className={css.titleText}> CampersPark</span>: бери трейлер в
           оренду!
         </h2>
 
@@ -105,10 +105,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-{
-  /* <h2>A good camper will ensure a comfortable life! </h2>
-        <h2>Look through our catalog</h2>
-        <h2> Order </h2>
-        <h2>And enjoy the trip!</h2> */
-}
