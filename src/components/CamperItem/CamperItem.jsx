@@ -7,7 +7,7 @@ import { updateModalIsActive } from '../../redux/modalSlice';
 import sprite from '../../assets/icons/icons.svg';
 import CamperModalAdd from '../CamperModalAdd/CamperModalAdd';
 
-const CamperItem = ({ camper }) => {
+const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
   const dispatch = useDispatch();
 
   const { name, price, rating, location, description, gallery, reviews } =
@@ -30,16 +30,6 @@ const CamperItem = ({ camper }) => {
   return (
     <div>
       <div className={css.camperContainer}>
-        <div className={css.imgContainer}>
-          <img
-            src={gallery[0]}
-            alt="camper photo"
-            width={290}
-            // height={310}
-            loading="lazy"
-          />
-        </div>
-
         <div className={css.camperContext}>
           <div className={css.titleInf}>
             <div className={css.titlePrice}>
@@ -53,11 +43,17 @@ const CamperItem = ({ camper }) => {
 
                 <button
                   className={css.heartBtn}
-                  // onClick={() => {
-                  //   toggleHeartClick(id);
-                  // }}
+                  onClick={() => {
+                    toggleHeartClick(id);
+                  }}
                 >
-                  <svg className={css.heart} width="24" height="24">
+                  <svg
+                    className={`${css.heart} ${
+                      isFavorite ? css.redHeart : css.whiteHeart
+                    }`}
+                    width="24"
+                    height="24"
+                  >
                     <use href={`${sprite}#icon-heart`} />
                   </svg>
                 </button>
@@ -79,9 +75,9 @@ const CamperItem = ({ camper }) => {
             <BoxOption camper={camper} />
           </div>
 
-          <button type="button" className="btn red" onClick={openModal}>
+          {/* <button type="button" className="btn red" onClick={openModal}>
             Show more
-          </button>
+          </button> */}
 
           <CamperModalAdd
             modalIsOpen={modalIsOpen}
@@ -89,21 +85,25 @@ const CamperItem = ({ camper }) => {
             camper={camper}
           />
         </div>
+
+        <div className={css.imgBtnWrap}>
+          <div className={css.imgContainer}>
+            <img
+              src={gallery[0]}
+              alt="camper photo"
+              width={290}
+              // height={310}
+              loading="lazy"
+            />
+          </div>
+
+          <button type="button" className="btn red" onClick={openModal}>
+            Show more
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default CamperItem;
-
-// const CamperItem = { camper, toggleHeartClick, isFavorite };
-
-// <svg
-//   className={`${css.heart} ${
-//     isFavorite ? css.redHeart : css.whiteHeart
-//   }`}
-//   width="24"
-//   height="24"
-// >
-//   <use href={`${sprite}#icon-heart`} />
-// </svg>;

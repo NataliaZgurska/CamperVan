@@ -1,15 +1,14 @@
 import React from 'react';
 import './Pagination.css';
+import { POSTS_PER_PAGE } from '../../constants';
+import { useSelector } from 'react-redux';
+import { selectTotalCountAdverts } from '../../redux/campers/campersSelectors';
 
-const Pagination = ({
-  totalPosts,
-  postsPerPage,
-  setCurrentPage,
-  currentPage,
-}) => {
+const Pagination = ({ setCurrentPage, currentPage }) => {
+  const totalPages = useSelector(selectTotalCountAdverts);
+
   let pages = [];
-
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalPages / POSTS_PER_PAGE); i++) {
     pages.push(i);
   }
 

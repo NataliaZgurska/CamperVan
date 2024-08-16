@@ -15,26 +15,27 @@ export const getAllAdverts = createAsyncThunk(
   }
 );
 
-// export const getAdverts = createAsyncThunk(
-//   'campers/getAdverts',
-//   async (page, thunkAPI) => {
-//     try {
-//       const response = await axios.get(`/adverts?page=${page}&limit=4`);
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const getAdverts = createAsyncThunk(
+  'campers/getAdverts',
+  async (page, thunkAPI) => {
+    try {
+      const response = await axios.get(`/adverts?page=${page}&limit=4`);
 
-// export const getTotalCountAdverts = createAsyncThunk(
-//   'campers/getTotalCountAdverts',
-//   async (_, thunkAPI) => {
-//     try {
-//       const response = await axios.get('/adverts');
-//       return response.data.length;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getTotalCountAdverts = createAsyncThunk(
+  'campers/getTotalCountAdverts',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/adverts');
+      return response.data.length;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -3,24 +3,31 @@
   border-radius: 20px;
   padding: 24px;
   width: 888px;
-  height: 358px;
+  /* height: 358px; */
+  height: 294px;
 
   display: flex;
   flex-direction: row;
   gap: 24px;
 }
 
+/********* Photo - ButtonLoadMore **************/
+.imgBtnWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .imgContainer {
   border-radius: 10px;
   width: 290px;
-  height: 310px;
+  height: 165px;
   overflow: hidden;
 }
 
 .imgContainer img {
   min-width: 290px;
   height: auto;
-  /* margin: 0 2px; */
   border-radius: 10px;
 }
 /*********Context**************/
