@@ -44,7 +44,7 @@ const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
                 <button
                   className={css.heartBtn}
                   onClick={() => {
-                    toggleHeartClick(id);
+                    toggleHeartClick(camper);
                   }}
                 >
                   <svg

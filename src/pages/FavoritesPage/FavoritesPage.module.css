@@ -1,13 +1,45 @@
-.noFavContainer {
+.welcomeTextContainer {
+  width: 1312px;
+  text-align: center;
+}
+
+.favoritesFormaContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.switchContainer {
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
-  color: blue;
-  margin: 50px;
+  justify-content: center;
+}
+
+h2 {
+  color: #1b551b;
 }
 
 .icon {
   stroke: red;
   fill: red;
+}
+
+.navLink {
+  display: inline-block;
+  text-decoration: none;
+  /* padding: 12px; */
+
+  color: blue;
+  font-weight: 600;
+  font-size: 26px;
+}
+.navLink:hover {
+  /* color: blue; */
+  text-decoration: underline;
+}
+.active {
+  /* color: blue; */
+  text-decoration: underline;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowForward } from 'react-icons/io';
 import logo from '../../assets/favicon/favicon.png';
@@ -6,6 +6,9 @@ import { imagesArrow } from '../../assets/img/carImages';
 import css from './HomePage.module.css';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
+import { getCamperById } from '../../redux/campers/campersOperation';
+import { useDispatch } from 'react-redux';
+import { addFavorite } from '../../redux/favorites';
 
 const getNavLinkClassName = ({ isActive }) =>
   clsx(css.navLink, {

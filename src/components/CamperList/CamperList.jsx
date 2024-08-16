@@ -2,33 +2,52 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CamperItem from '../CamperItem/CamperItem';
-import css from './CampersList.module.css';
 import {
   selectCampers,
   selectTotalCountAdverts,
 } from '../../redux/campers/campersSelectors';
 import {
   getAdverts,
+  getCamperById,
   getTotalCountAdverts,
 } from '../../redux/campers/campersOperation';
 import Pagination from '../Pagination/Pagination';
 import { POSTS_PER_PAGE } from '../../constants';
 
-const CampersList = () => {
-  const dispatch = useDispatch();
-  const campers = useSelector(selectCampers);
+import css from './CamperList.module.css';
+import {
+  addFavorite,
+  delFavorite,
+  selectFavorites,
+} from '../../redux/favorites';
+import { useLocation } from 'react-router-dom';
 
+const CamperList = () => {
+  const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const lastPostIndex = currentPage * POSTS_PER_PAGE;
   const firstPostIndex = lastPostIndex - POSTS_PER_PAGE;
+  let campers = null;
+  let totalPages = 0;
 
-  useEffect(() => {
-    dispatch(getTotalCountAdverts());
-  }, []);
+  const location = useLocation();
+  const currentPath = location.pathname.split('/')[1];
 
-  useEffect(() => {
-    dispatch(getAdverts(currentPage));
-  }, [currentPage]);
+  if (currentPath === 'catalog') {
+    campers = useSelector(selectCampers);
+    useEffect(() => {
+      dispatch(getTotalCountAdverts());
+    }, []);
+
+    useEffect(() => {
+      dispatch(getAdverts(currentPage));
+    }, [currentPage]);
+
+    totalPages = useSelector(selectTotalCountAdverts);
+  } else {
+    campers = useSelector(selectFavorites);
+    totalPages = campers.length;
+  }
 
   // *********** FavoritesCheck *************
   const [favs, setFavs] = useState([]);
@@ -38,12 +57,14 @@ const CampersList = () => {
     setFavs(storedItems);
   }, []);
 
-  const toggleHeartClick = id => {
+  const toggleHeartClick = camper => {
     let updatedItems;
-    if (favs.includes(id)) {
-      updatedItems = favs.filter(itemId => itemId !== id);
+    if (favs.includes(camper._id)) {
+      updatedItems = favs.filter(itemId => itemId !== camper._id);
+      dispatch(delFavorite(camper._id));
     } else {
-      updatedItems = [...favs, id];
+      updatedItems = [...favs, camper._id];
+      dispatch(addFavorite(camper));
     }
     setFavs(updatedItems);
     localStorage.setItem('favorites', JSON.stringify(updatedItems));
@@ -65,9 +86,15 @@ const CampersList = () => {
         </ul>
       )}
 
-      <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} />
+      {totalPages > POSTS_PER_PAGE && (
+        <Pagination
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      )}
     </div>
   );
 };
 
-export default CampersList;
+export default CamperList;

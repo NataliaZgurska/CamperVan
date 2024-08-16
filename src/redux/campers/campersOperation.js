@@ -39,3 +39,21 @@ export const getTotalCountAdverts = createAsyncThunk(
     }
   }
 );
+
+export const getAdvertById = createAsyncThunk(
+  'campers/getAdvertById',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`/adverts/${id}`);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getCamperById = async id => {
+  const response = await axios.get(`/adverts/${id}`);
+  return response.data;
+};

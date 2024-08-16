@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import Loader from '../../components/Loader/Loader.jsx';
 import Filters from '../../components/Filters/Filters.jsx';
-import CampersList from '../../components/CampersList/CampersList.jsx';
+import { selectIsLoading } from '../../redux/campers/campersSelectors.js';
+import CamperList from '../../components/CamperList/CamperList.jsx';
 
 import css from './CatalogPage.module.css';
-import { selectIsLoading } from '../../redux/campers/campersSelectors.js';
 
 const CatalogPage = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -21,7 +21,7 @@ const CatalogPage = () => {
 
       <div className={css.catalogFilterContainer}>
         <Filters />
-        <CampersList />
+        <CamperList />
       </div>
     </div>
   );

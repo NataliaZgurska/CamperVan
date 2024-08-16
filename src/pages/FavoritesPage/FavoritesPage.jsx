@@ -1,28 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import sprite from '../../assets/icons/icons.svg';
 import css from './FavoritesPage.module.css';
+import { useSelector } from 'react-redux';
+import { selectFavorites } from '../../redux/favorites';
+import CamperList from '../../components/CamperList/CamperList';
+import { selectIsLoading } from '../../redux/campers/campersSelectors';
+import { Helmet } from 'react-helmet-async';
+import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
+
+const getNavLinkClassName = ({ isActive }) =>
+  clsx(css.navLink, {
+    [css.active]: isActive,
+  });
 
 const FavoritesPage = () => {
-  // const [favs, setFavs] = useState([]);
-
-  // useEffect(() => {
-  //   const storedItems = JSON.parse(localStorage.getItem('favorites')) || [];
-  //   setFavs(storedItems);
-  // }, []);
-
-  // console.log(favs);
+  const favCampers = useSelector(selectFavorites);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <>
-      <div className={css.noFavContainer}>
-        <svg className={css.icon} width="26" height="26">
-          <use href={`${sprite}#icon-heart`} />
-        </svg>
-        <h2>
-          Soon! You will have the opportunity to choose your favorite campers
-          and save them on this page
-        </h2>
-      </div>
+      <Helmet>
+        <title>CamperFavorites</title>
+      </Helmet>
+
+      {isLoading && <Loader />}
+
+      {favCampers.length > 0 ? (
+        <CamperList />
+      ) : (
+        <div className={css.welcomeTextContainer}>
+          <h2>You haven't selected any favorite campers yet.</h2>
+          <div className={css.switchContainer}>
+            <h2>
+              Switch to the{' '}
+              <NavLink className={getNavLinkClassName} to="/catalog">
+                Catalog
+              </NavLink>{' '}
+              and choose
+            </h2>
+            <svg className={css.icon} width="26" height="26">
+              <use href={`${sprite}#icon-heart`} />
+            </svg>
+          </div>
+        </div>
+      )}
     </>
   );
 };
