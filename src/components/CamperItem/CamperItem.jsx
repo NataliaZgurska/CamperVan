@@ -75,10 +75,6 @@ const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
             <BoxOption camper={camper} />
           </div>
 
-          {/* <button type="button" className="btn red" onClick={openModal}>
-            Show more
-          </button> */}
-
           <CamperModalAdd
             modalIsOpen={modalIsOpen}
             closeModal={closeModal}

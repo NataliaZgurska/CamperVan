@@ -8,6 +8,7 @@ import { selectIsLoading } from '../../redux/campers/campersSelectors';
 import { Helmet } from 'react-helmet-async';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
+import FormBook from '../../components/FormBook/FormBook';
 
 const getNavLinkClassName = ({ isActive }) =>
   clsx(css.navLink, {
@@ -27,7 +28,12 @@ const FavoritesPage = () => {
       {isLoading && <Loader />}
 
       {favCampers.length > 0 ? (
-        <CamperList />
+        <div className={css.favoritesFormaContainer}>
+          <div className={css.form}>
+            <FormBook />
+          </div>
+          <CamperList />
+        </div>
       ) : (
         <div className={css.welcomeTextContainer}>
           <h2>You haven't selected any favorite campers yet.</h2>

@@ -86,7 +86,7 @@ const CamperList = () => {
         </ul>
       )}
 
-      {totalPages > POSTS_PER_PAGE && (
+      {currentPath === 'catalog' && (
         <Pagination
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}

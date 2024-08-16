@@ -65,8 +65,11 @@
   padding: 18px;
   width: 400px;
   height: 114px;
-  font-weight: 400;
+  resize: none;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
+  letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
 .formInput:checked,
@@ -76,4 +79,13 @@
 .formTexrarea:focus {
   outline: none;
   border: 1px solid rgba(16, 24, 40, 0.6);
+}
+
+.formInput.error {
+  border-color: blue;
+  color: red;
+}
+
+.errorMessage {
+  color: red;
 }

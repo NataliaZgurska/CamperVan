@@ -1,12 +1,16 @@
-.welcomeTextContainer {
-  width: 1312px;
-  text-align: center;
-}
-
 .favoritesFormaContainer {
   display: flex;
   flex-direction: row;
   gap: 64px;
+}
+
+.form {
+  width: 448px;
+}
+
+.welcomeTextContainer {
+  width: 1312px;
+  text-align: center;
 }
 
 .switchContainer {
