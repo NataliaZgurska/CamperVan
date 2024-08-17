@@ -22,6 +22,7 @@ const FormBook = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -62,22 +63,21 @@ const FormBook = () => {
         </div>
 
         {/* Поле для email */}
-        <div>
+        <div className={css.formInputs}>
           <input
             id="email"
             type="email"
             {...register('email')}
             placeholder="Email"
             className={clsx(css.formInput, {
-              [css.error]: errors.name,
+              [css.error]: errors.email,
             })}
           />
           <p className={css.errorMessage}>{errors.email?.message}</p>
         </div>
 
         {/* Поле для дати */}
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-          {/* <label htmlFor="bookingDate">Booking Date:</label> */}
+        <div className={css.dataWrap}>
           <Controller
             control={control}
             name="bookingDate"
@@ -87,7 +87,6 @@ const FormBook = () => {
                 onChange={date => field.onChange(date)}
                 selected={field.value}
                 dateFormat="dd/MM/yyyy"
-                // className="custom-input"
                 className={css.formInput}
                 minDate={today}
                 ref={datePickerRef}
@@ -97,7 +96,7 @@ const FormBook = () => {
           <FaCalendarAlt
             style={{
               position: 'absolute',
-              right: 10,
+              right: 16,
               top: '50%',
               transform: 'translateY(-50%)',
               cursor: 'pointer',
@@ -107,7 +106,7 @@ const FormBook = () => {
         </div>
 
         {/* Поле для коментаря */}
-        <div>
+        <div className={css.formInputs}>
           <textarea
             id="comment"
             {...register('comment')}
@@ -115,7 +114,7 @@ const FormBook = () => {
             rows={10}
             className={css.formTexrarea}
           />
-          {errors.comment && <p>{errors.comment.message}</p>}
+          <p className={css.errorMessage}>{errors.comment?.message}</p>
         </div>
 
         <button type="submit" className="btn red">
