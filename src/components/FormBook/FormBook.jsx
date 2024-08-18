@@ -32,7 +32,7 @@ const FormBook = () => {
   const onSubmit = data => {
     console.log(data);
     toast(
-      'Your data has been sent successfully. Our manager will contact you shortly'
+      'Your data has been sent successfully. Our manager will contact you soon'
     );
     reset();
   };

@@ -1,6 +1,5 @@
 .catalogFilterContainer {
-  width: 1312px;
-
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 64px;

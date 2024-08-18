@@ -1,39 +1,19 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import sprite from '../../assets/icons/icons.svg';
+import { useForm } from 'react-hook-form';
+
 import css from './Filters.module.css';
 
 const Filters = () => {
   const [location, setLocation] = useState('');
-  const [equipment, setEquipment] = useState({
-    AC: false,
-    Automatic: false,
-    Kitchen: false,
-    TV: false,
-    ShowerWC: false,
-  });
-
-  const [vehicleType, setVehicleType] = useState('');
-
   const handleChangeLocation = event => {
     setLocation(event.target.value);
   };
 
-  const handleEquipmentChange = e => {
-    const { name, checked } = e.target;
-    setEquipment({
-      ...equipment,
-      [name]: checked,
-    });
-  };
-
-  const handleVehicleTypeChange = e => {
-    setVehicleType(e.target.value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log('equipment: ', equipment);
-    console.log('vehicleType: ', vehicleType);
+  const { register, handleSubmit, watch, reset } = useForm();
+  const onSubmit = data => {
+    console.log(data);
   };
 
   return (
@@ -53,150 +33,154 @@ const Filters = () => {
 
       <p className={css.filtersTitle}>Filters</p>
 
-      <form onSubmit={handleSubmit} className={css.filterForm}>
-        <div className={css.equipmentFilter}>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.filterForm}>
+        <div className={css.equipmentFilterWrap}>
           <p className={css.vehicleFilterTitle}>Vehicle equipment</p>
 
-          <div className={css.optionsContainer}>
-            <div>
+          <div className={css.equipmentFilter}>
+            <label className={css.checkboxSquare}>
               <input
                 type="checkbox"
-                name="AC"
-                checked={equipment.AC}
-                onChange={handleEquipmentChange}
-                id="AC"
+                {...register('equipment')}
+                value={'AC'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="AC" className={css.optionLabel}>
+              <span className={css.customCheckbox}>
+                AC
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-ac`} />
                 </svg>
-                AC
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div>
+            <label className={css.checkboxSquare}>
               <input
                 type="checkbox"
-                name="Automatic"
-                checked={equipment.Automatic}
-                onChange={handleEquipmentChange}
-                id="Automatic"
+                {...register('equipment')}
+                value={'automatic'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="Automatic" className={css.optionLabel}>
-                <svg className={css.iconOption} width="26" height="27">
+              <span className={css.customCheckbox}>
+                Automatic
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-automatic`} />
                 </svg>
-                Automatic
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div>
+            <label className={css.checkboxSquare}>
               <input
                 type="checkbox"
-                name="Kitchen"
-                checked={equipment.Kitchen}
-                onChange={handleEquipmentChange}
-                id="Kitchen"
+                {...register('equipment')}
+                value={'kitchen'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="Kitchen" className={css.optionLabel}>
-                <svg className={css.iconOption} width="21" height="27">
+              <span className={css.customCheckbox}>
+                kitchen
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-Kitchen`} />
                 </svg>
-                Kitchen
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div>
+            <label className={css.checkboxSquare}>
               <input
                 type="checkbox"
-                name="TV"
-                checked={equipment.TV}
-                onChange={handleEquipmentChange}
-                id="TV"
+                {...register('equipment')}
+                value={'TV'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="TV" className={css.optionLabel}>
-                <svg className={css.iconOption} width="26" height="31">
+              <span className={css.customCheckbox}>
+                TV
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-tv`} />
                 </svg>
-                TV
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div>
+            <label className={css.checkboxSquare}>
               <input
                 type="checkbox"
-                name="ShowerWC"
-                checked={equipment.ShowerWC}
-                onChange={handleEquipmentChange}
-                id="ShowerWC"
+                {...register('equipment')}
+                value={'toilet'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="ShowerWC" className={css.optionLabel}>
-                <svg className={css.iconOption} width="28" height="28">
+              <span className={css.customCheckbox}>
+                Shower/WC
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-shower`} />
                 </svg>
-                Shower/WC
-              </label>
-            </div>
+              </span>
+            </label>
           </div>
         </div>
 
-        <div className={css.typeFilter}>
-          <p className={css.vehicleFilterTitle}> Vehicle type</p>
+        <div className={css.typeFilterWrap}>
+          <p className={css.vehicleFilterTitle}>Vehicle type</p>
 
-          <div className={css.optionsContainer}>
-            <div>
+          <div className={css.equipmentFilter}>
+            <label className={css.checkboxSquare}>
               <input
                 type="radio"
-                value="van"
-                checked={vehicleType === 'van'}
-                id="van"
-                onChange={handleVehicleTypeChange}
+                {...register('vehicleType')}
+                value={'van'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="van" className={css.optionLabel}>
-                <svg className={css.iconOption} width="40" height="28">
+              <span className={css.customCheckbox}>
+                Van
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-camper-van`} />
                 </svg>
-                Van
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div>
+            <label className={css.checkboxSquare}>
               <input
                 type="radio"
-                value="fully"
-                checked={vehicleType === 'fully'}
-                id="fully"
-                onChange={handleVehicleTypeChange}
+                {...register('vehicleType')}
+                value={'fullyIntegrated'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="fully" className={css.optionLabel}>
-                <svg className={css.iconOption} width="40" height="29">
+              <span className={css.customCheckbox}>
+                FullyIntegrated
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-camper-fully`} />
                 </svg>
-                Fully Integrated
-              </label>
-            </div>
+              </span>
+            </label>
 
-            <div>
+            <label className={css.checkboxSquare}>
               <input
                 type="radio"
-                value="alcove"
-                checked={vehicleType === 'alcove'}
-                id="alcove"
-                onChange={handleVehicleTypeChange}
+                {...register('vehicleType')}
+                value={'alcove'}
+                className={css.hiddenCheckbox}
               />
-              <label htmlFor="alcove" className={css.optionLabel}>
-                <svg className={css.iconOption} width="40" height="29">
+              <span className={css.customCheckbox}>
+                Alcove
+                <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-camper-alcove`} />
                 </svg>
-                Alcove
-              </label>
-            </div>
+              </span>
+            </label>
           </div>
         </div>
 
-        <button type="submit" className="btn" disabled>
-          Search
-        </button>
+        {/* <label>Age group</label>
+        <select {...register('ageGroup')}>
+          <option value="0">0 - 1</option>
+          <option value="1">1 - 100</option>
+        </select> */}
+
+        <div className={css.filterBtns}>
+          <button type="submit" className="btn red">
+            Search
+          </button>
+
+          <button type="button" onClick={() => reset()} className="btn white">
+            Clear Filter
+          </button>
+        </div>
       </form>
     </div>
   );

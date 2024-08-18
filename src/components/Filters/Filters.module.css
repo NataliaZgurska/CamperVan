@@ -4,6 +4,7 @@
   flex-direction: column;
 }
 
+/************* Location ***************************/
 .locationLabel {
   position: relative;
   display: flex;
@@ -41,6 +42,7 @@
   top: 44px;
 }
 
+/********** filtersTitle ********************/
 .filtersTitle {
   font-weight: 500;
   font-size: 16px;
@@ -50,10 +52,94 @@
   margin-bottom: 14px;
 }
 
+/***************** filterForm *************************/
 .filterForm {
   display: flex;
   flex-direction: column;
 }
+
+.vehicleFilterTitle {
+  height: 48px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+  border-bottom: 2px solid rgba(16, 24, 40, 0.1);
+}
+/**************** Filter Checkbox RadioBtn **********************/
+
+.equipmentFilterWrap,
+.typeFilterWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.equipmentFilterWrap {
+  margin-bottom: 32px;
+}
+
+.typeFilterWrap {
+  margin-bottom: 64px;
+}
+.equipmentFilter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.checkboxSquare {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hiddenCheckbox {
+  display: none;
+}
+
+.customCheckbox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 112px;
+  height: 95px;
+  padding: 8px;
+
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 10px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+  cursor: pointer;
+
+  transition: border 0.3s;
+}
+
+.checkboxSquare input:checked + .customCheckbox {
+  border: 1px solid red;
+}
+
+.iconOption {
+  width: 28px;
+  height: 24px;
+
+  stroke: #101828;
+  fill: none;
+}
+
+.filterBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 
+
 
 .equipmentFilter {
   width: 100%;
@@ -65,14 +151,7 @@
   margin-bottom: 32px;
 }
 
-.vehicleFilterTitle {
-  height: 48px;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 120%;
-  color: #101828;
-  border-bottom: 2px solid rgba(16, 24, 40, 0.1);
-}
+
 
 .optionsContainer {
   width: 100%;
@@ -125,3 +204,7 @@
 
   margin-bottom: 64px;
 }
+
+.radioBtnInput {
+  color: black;
+} */
