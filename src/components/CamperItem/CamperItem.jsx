@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { LuEuro } from 'react-icons/lu';
-import BoxOption from '../BoxOption/BoxOption';
-import css from './CamperItem.module.css';
 import { useDispatch } from 'react-redux';
-import { updateModalIsActive } from '../../redux/modalSlice';
 import sprite from '../../assets/icons/icons.svg';
+import BoxOption from '../BoxOption/BoxOption';
+import { updateModalIsActive } from '../../redux/modalSlice';
 import CamperModalAdd from '../CamperModalAdd/CamperModalAdd';
+
+import css from './CamperItem.module.css';
 
 const CamperItem = ({ camper, toggleHeartClick, isFavorite }) => {
   const dispatch = useDispatch();

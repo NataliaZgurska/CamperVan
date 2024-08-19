@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { LuEuro } from 'react-icons/lu';
 import CamperFeatures from '../CamperFeatures/CamperFeatures';
 import CamperReviewsList from '../CamperReviewsList/CamperReviewsList';
-import { useSelector } from 'react-redux';
 import FormBook from '../FormBook/FormBook';
 
 import css from './CamperModal.module.css';

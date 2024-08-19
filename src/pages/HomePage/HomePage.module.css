@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 80px;
 
   --color-title: #1b551b;
@@ -34,15 +35,12 @@
 }
 
 .homePageTitle h1 {
-  /* color: blue; */
   color: var(--color-title);
   font-weight: 800;
   font-size: 40px;
 }
 
 .homePageText2 {
-  /* color: #101828; */
-  /* color: blue; */
   color: var(--color-title);
   font-weight: 600;
   font-size: 26px;
@@ -68,87 +66,19 @@
 .navLink {
   display: inline-block;
   text-decoration: none;
-  /* padding: 12px; */
 
   color: blue;
   font-weight: 600;
   font-size: 26px;
 }
 .navLink:hover {
-  /* color: blue; */
   text-decoration: underline;
 }
 .active {
-  /* color: blue; */
   text-decoration: underline;
 }
 
 .titleText {
-  /* color: blue; */
   color: var(--color-title);
   font-weight: 800;
-  /* font-size: 40px; */
-}
-/********************************/
-
-.carousel {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-
-  overflow: hidden;
-}
-
-.sliderImgList {
-  width: 100%;
-  max-width: 1050px;
-
-  display: flex;
-  flex-direction: row;
-}
-
-.carouselImages {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-}
-
-.image {
-  min-width: 350px;
-  height: auto;
-  /* margin: 0 2px; */
-  border-radius: 10px;
-}
-
-.leftArrow,
-.rightArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background-color: transparent;
-  color: blue;
-  /* color: white;
- border-radius: 50%;  */
-  padding: 10px;
-  cursor: pointer;
-
-  z-index: 1;
-}
-
-.leftArrow {
-  left: 10px;
-}
-
-.rightArrow {
-  right: 10px;
-}
-
-.leftArrow:disabled,
-.rightArrow:disabled {
-  /* background-color: rgba(0, 0, 0, 0.2); */
-  color: transparent;
-  cursor: not-allowed;
 }

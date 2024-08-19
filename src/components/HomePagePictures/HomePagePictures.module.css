@@ -1,0 +1,64 @@
+.carouselContainer {
+  width: 1312px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+
+  overflow: hidden;
+}
+
+.sliderImgList {
+  width: 100%;
+  max-width: 1050px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.carouselImages {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image {
+  min-width: 350px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  color: blue;
+  padding: 10px;
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+.leftArrow {
+  left: 10px;
+}
+
+.rightArrow {
+  right: 10px;
+}
+
+.leftArrow:disabled,
+.rightArrow:disabled {
+  color: transparent;
+  cursor: not-allowed;
+}

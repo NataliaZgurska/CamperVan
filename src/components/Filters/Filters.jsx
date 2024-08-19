@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import sprite from '../../assets/icons/icons.svg';
 import { useForm } from 'react-hook-form';
 
 import css from './Filters.module.css';
-import { resetFilter, selectFilter, setFilter } from '../../redux/filtersSlice';
+import { resetFilter, setFilter } from '../../redux/filtersSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectFilter, selectLocations } from '../../redux/selectors';
+
 import clsx from 'clsx';
+import classNames from 'classnames';
 
 const Filters = () => {
   const dispatch = useDispatch();
   const filterState = useSelector(selectFilter);
+  const locationArray = useSelector(selectLocations);
 
   const [location, setLocation] = useState('');
   const handleChangeLocation = event => {
@@ -46,6 +49,22 @@ const Filters = () => {
       <p className={css.filtersTitle}>Filters</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className={css.filterForm}>
+        {/* /********** Location  ********************/}
+
+        <div className={css.typeFilterWrap}>
+          <label className={css.vehicleFilterTitle}>Location</label>
+          <select {...register('location')} className={css.locationInput}>
+            <option key={'all'} value={'all'}>
+              All
+            </option>
+            {locationArray.map(location => (
+              <option key={location} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* *************** vehicleType ****************  */}
         <div className={css.typeFilterWrap}>
           <p className={css.vehicleFilterTitle}>Vehicle type</p>
@@ -122,9 +141,11 @@ const Filters = () => {
                 className={css.hiddenCheckbox}
               />
               <span
-                className={`${css.customCheckbox} ${
-                  filterState.equipment.includes('kitchen') ? css.active : ''
-                }`}
+                className={classNames(css.customCheckbox, {
+                  [css.active]:
+                    filterState.equipment.length > 0 &&
+                    filterState.equipment.includes('kitchen'),
+                })}
               >
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-Kitchen`} />
@@ -141,9 +162,11 @@ const Filters = () => {
                 className={css.hiddenCheckbox}
               />
               <span
-                className={`${css.customCheckbox} ${
-                  filterState.equipment.includes('toilet') ? css.active : ''
-                }`}
+                className={classNames(css.customCheckbox, {
+                  [css.active]:
+                    filterState.equipment.length > 0 &&
+                    filterState.equipment.includes('toilet'),
+                })}
               >
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-shower`} />
@@ -160,9 +183,11 @@ const Filters = () => {
                 className={css.hiddenCheckbox}
               />
               <span
-                className={`${css.customCheckbox} ${
-                  filterState.equipment.includes('TV') ? css.active : ''
-                }`}
+                className={classNames(css.customCheckbox, {
+                  [css.active]:
+                    filterState.equipment.length > 0 &&
+                    filterState.equipment.includes('TV'),
+                })}
               >
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-tv`} />
@@ -173,11 +198,6 @@ const Filters = () => {
           </div>
         </div>
 
-        {/* <label>Age group</label>
-        <select {...register('ageGroup')}>
-          <option value="0">0 - 1</option>
-          <option value="1">1 - 100</option>
-        </select> */}
         <div className={css.filterBtns}>
           <button type="submit" className="btn red">
             Search

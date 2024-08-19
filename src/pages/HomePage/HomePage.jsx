@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { IoIosArrowBack } from 'react-icons/io';
-import { IoIosArrowForward } from 'react-icons/io';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/favicon/favicon.png';
 import { imagesArrow } from '../../assets/img/carImages';
-import css from './HomePage.module.css';
-import { NavLink } from 'react-router-dom';
+
 import clsx from 'clsx';
-import { getCamperById } from '../../redux/campers/campersOperation';
-import { useDispatch } from 'react-redux';
-import { addFavorite } from '../../redux/favorites';
+import css from './HomePage.module.css';
+import HomePagePictures from '../../components/HomePagePictures/HomePagePictures';
 
 const getNavLinkClassName = ({ isActive }) =>
   clsx(css.navLink, {
@@ -16,23 +13,6 @@ const getNavLinkClassName = ({ isActive }) =>
   });
 
 const HomePage = () => {
-  const images = imagesArrow;
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleImagesCount = 3;
-
-  const nextSlide = () => {
-    if (currentIndex < images.length - visibleImagesCount) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
   return (
     <div className={css.homePageContainer}>
       <div className={css.homePageTextWrap}>
@@ -43,68 +23,51 @@ const HomePage = () => {
           </div>
 
           <h2 className={css.homePageText2}>
-            будинки на колесах, в яких хочеться жити
+            homes on wheels that you want to live in
           </h2>
         </div>
-
         <div className={css.homePageQuestions}>
           <p>
-            <i>Збираєтесь у подорож?</i>
+            <i>Going on a trip?</i>
           </p>
           <p>
-            <i>Не хочете бути прив'язаним до одного місця?</i>
+            <i>Don't want to be tied to one place?</i>
           </p>
           <p>
-            <i>Плануєте придбати кемпер і потрібен тест-драйв?</i>
+            <i>Planning to buy a camper and need a test drive?</i>
           </p>
         </div>
 
         <h2 className={css.homePageText3}>
-          Все це можна влаштувати з
-          <span className={css.titleText}> CampersPark</span>: бери трейлер в
-          оренду!
+          All this can be arranged with
+          <span className={css.titleText}> CampersPark</span>: take the trailer
+          to rent!
         </h2>
 
         <NavLink className={getNavLinkClassName} to="/catalog">
-          Обирай кемпер з каталогу
+          Choose a camper from the catalog
         </NavLink>
-        <h2 className={css.homePageText3}>Замовляй та насолоджуйся!</h2>
+
+        <h2 className={css.homePageText3}>Order and enjoy!</h2>
       </div>
 
-      <div className={css.carousel}>
-        <button
-          onClick={prevSlide}
-          className={css.leftArrow}
-          disabled={currentIndex === 0}
-        >
-          <IoIosArrowBack size={40} />
-        </button>
-
-        <div className={css.sliderImgList}>
-          <div className={css.carouselImages}>
-            {images
-              .slice(currentIndex, currentIndex + visibleImagesCount)
-              .map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`slide-${index}`}
-                  className={css.image}
-                />
-              ))}
-          </div>
-        </div>
-
-        <button
-          onClick={nextSlide}
-          className={css.rightArrow}
-          disabled={currentIndex >= images.length - visibleImagesCount}
-        >
-          <IoIosArrowForward size={40} />
-        </button>
+      <div className={css.carouselConteiner}>
+        <HomePagePictures />
       </div>
     </div>
   );
 };
 
 export default HomePage;
+
+//       будинки на колесах, в яких хочеться жити
+//   < i > Збираєтесь у подорож ?</ >
+//   <i>Не хочете бути прив'язаним до одного місця?</i>
+// <i>Плануєте придбати кемпер і потрібен тест-драйв?</i>
+// <h2 className={css.homePageText3}>
+//           Все це можна влаштувати з
+//           <span className={css.titleText}> CampersPark</span>: бери трейлер в
+//           оренду!
+//         </h2>
+//         Обирай кемпер з каталогу
+//         <h2 className={css.homePageText3}>Замовляй та насолоджуйся!</h2>

@@ -64,18 +64,18 @@ const BoxOption = ({ camper }) => {
             <svg className="iconOption" width="20" height="20">
               <use href={`${sprite}#icon-aircond`} />
             </svg>
-            <p>{details.airConditioner} air conditioner</p>
+            <p>{details.airConditioner} conditioner</p>
           </li>
         )}
 
-        {modalIsActive && details.CD > 0 && (
+        {/* {modalIsActive && details.CD > 0 && (
           <li className={css.boxOption}>
             <svg className="iconOption" width="20" height="20">
               <use href={`${sprite}#icon-cd`} />
             </svg>
             <p> CD</p>
           </li>
-        )}
+        )} */}
 
         {modalIsActive && details.radio > 0 && (
           <li className={css.boxOption}>

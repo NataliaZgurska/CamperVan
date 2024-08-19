@@ -1,6 +1,7 @@
 import React from 'react';
-import css from './CamperReviewsList.module.css';
 import CamperReviewItem from '../CamperReviewItem/CamperReviewItem';
+
+import css from './CamperReviewsList.module.css';
 
 const CamperReviewsList = ({ camper }) => {
   const { reviews } = camper;

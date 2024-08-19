@@ -6,8 +6,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
-import css from './FormBook.module.css';
 import clsx from 'clsx';
+
+import css from './FormBook.module.css';
 
 const schema = yup.object().shape({
   name: yup.string().required().max(10),

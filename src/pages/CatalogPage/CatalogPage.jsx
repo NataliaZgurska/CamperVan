@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import Loader from '../../components/Loader/Loader.jsx';
 import Filters from '../../components/Filters/Filters.jsx';
-import { selectIsLoading } from '../../redux/campers/campersSelectors.js';
 import CamperList from '../../components/CamperList/CamperList.jsx';
+import { selectIsLoading } from '../../redux/selectors.js';
 
 import css from './CatalogPage.module.css';
 

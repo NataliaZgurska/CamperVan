@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './CamperFeatures.module.css';
-import FormBook from '../FormBook/FormBook';
 import BoxOption from '../BoxOption/BoxOption';
 
 const CamperFeatures = ({ camper }) => {

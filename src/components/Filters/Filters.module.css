@@ -5,25 +5,15 @@
 }
 
 /************* Location ***************************/
-.locationLabel {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  color: rgba(16, 24, 40, 0.6);
-
-  margin-bottom: 32px;
-}
-
 .locationInput {
+  display: flex;
+  align-items: center;
+
   border: none;
   border-radius: 10px;
-  padding: 18px 218px 18px 44px;
-  width: 360px;
+  padding: 16px;
+  padding-right: 30px;
+  width: 100%;
   height: 56px;
 
   font-weight: 400;
@@ -33,14 +23,17 @@
   background-color: #f7f7f7;
 }
 
-.iconMap {
-  stroke: #101828;
-  fill: none;
-
-  position: absolute;
-  left: 18px;
-  top: 44px;
+/* select {
+  flex-grow: 1;
+  padding-right: 30px;
+  appearance: none;
 }
+
+.locationInput::after {
+  content: '▼';
+  margin-left: -20px;
+  pointer-events: none;
+} */
 
 /********** filtersTitle ********************/
 .filtersTitle {
@@ -125,7 +118,7 @@
   border: 1px solid red;
 }
 
-.customCheckbox.active {
+.active {
   border: 1px solid blue;
 }
 

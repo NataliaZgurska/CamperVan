@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import CamperItem from '../CamperItem/CamperItem';
-import {
-  selectCampers,
-  selectTotalCountAdverts,
-} from '../../redux/campers/campersSelectors';
-import {
-  getAdverts,
-  getAllAdverts,
-  getCamperById,
-  getTotalCountAdverts,
-} from '../../redux/campers/campersOperation';
+import { selectFavorites, selectVisibleCampers } from '../../redux/selectors';
+
 import Pagination from '../Pagination/Pagination';
 import { POSTS_PER_PAGE } from '../../constants';
 
+import { addFavorite, delFavorite } from '../../redux/favorites';
+
 import css from './CamperList.module.css';
-import {
-  addFavorite,
-  delFavorite,
-  selectFavorites,
-} from '../../redux/favorites';
-import { useLocation } from 'react-router-dom';
-import { selectVisibleCampers } from '../../redux/filtersSlice';
 
 const CamperList = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const lastPostIndex = currentPage * POSTS_PER_PAGE;
   const firstPostIndex = lastPostIndex - POSTS_PER_PAGE;
-  let campersAll = null;
+
   let campersCurrent = null;
   let totalPages = 0;
 
@@ -38,6 +26,7 @@ const CamperList = () => {
 
   if (currentPath === 'catalog') {
     const filteredCampers = useSelector(selectVisibleCampers);
+
     campersCurrent = filteredCampers.slice(firstPostIndex, lastPostIndex);
     totalPages = filteredCampers.length;
   } else {

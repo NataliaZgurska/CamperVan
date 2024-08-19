@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import sprite from '../../assets/icons/icons.svg';
-import css from './FavoritesPage.module.css';
 import { useSelector } from 'react-redux';
-import { selectFavorites } from '../../redux/favorites';
-import CamperList from '../../components/CamperList/CamperList';
-import { selectIsLoading } from '../../redux/campers/campersSelectors';
+import { NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
+
+import sprite from '../../assets/icons/icons.svg';
 import FormBook from '../../components/FormBook/FormBook';
+import CamperList from '../../components/CamperList/CamperList';
+import { selectFavorites, selectIsLoading } from '../../redux/selectors';
+
+import css from './FavoritesPage.module.css';
 
 const getNavLinkClassName = ({ isActive }) =>
   clsx(css.navLink, {
