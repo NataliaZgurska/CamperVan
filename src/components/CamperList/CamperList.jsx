@@ -8,6 +8,7 @@ import {
 } from '../../redux/campers/campersSelectors';
 import {
   getAdverts,
+  getAllAdverts,
   getCamperById,
   getTotalCountAdverts,
 } from '../../redux/campers/campersOperation';
@@ -21,32 +22,27 @@ import {
   selectFavorites,
 } from '../../redux/favorites';
 import { useLocation } from 'react-router-dom';
+import { selectVisibleCampers } from '../../redux/filtersSlice';
 
 const CamperList = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const lastPostIndex = currentPage * POSTS_PER_PAGE;
   const firstPostIndex = lastPostIndex - POSTS_PER_PAGE;
-  let campers = null;
+  let campersAll = null;
+  let campersCurrent = null;
   let totalPages = 0;
 
   const location = useLocation();
   const currentPath = location.pathname.split('/')[1];
 
   if (currentPath === 'catalog') {
-    campers = useSelector(selectCampers);
-    useEffect(() => {
-      dispatch(getTotalCountAdverts());
-    }, []);
-
-    useEffect(() => {
-      dispatch(getAdverts(currentPage));
-    }, [currentPage]);
-
-    totalPages = useSelector(selectTotalCountAdverts);
+    const filteredCampers = useSelector(selectVisibleCampers);
+    campersCurrent = filteredCampers.slice(firstPostIndex, lastPostIndex);
+    totalPages = filteredCampers.length;
   } else {
-    campers = useSelector(selectFavorites);
-    totalPages = campers.length;
+    campersCurrent = useSelector(selectFavorites);
+    totalPages = campersCurrent.length;
   }
 
   // *********** FavoritesCheck *************
@@ -72,9 +68,9 @@ const CamperList = () => {
 
   return (
     <div className={css.campersListContainer}>
-      {campers && (
+      {totalPages > 0 ? (
         <ul className={css.campersList}>
-          {campers.map(camper => (
+          {campersCurrent.map(camper => (
             <li key={camper._id}>
               <CamperItem
                 camper={camper}
@@ -84,9 +80,14 @@ const CamperList = () => {
             </li>
           ))}
         </ul>
+      ) : (
+        <div className={css.noFilteredCampers}>
+          <h2>Sorry, there are no campers at your request.</h2>
+          <h2>Try to change your filter</h2>
+        </div>
       )}
 
-      {currentPath === 'catalog' && (
+      {totalPages > 4 && currentPath === 'catalog' && (
         <Pagination
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
@@ -98,3 +99,58 @@ const CamperList = () => {
 };
 
 export default CamperList;
+
+//  const dispatch = useDispatch();
+//  const [currentPage, setCurrentPage] = useState(1);
+//  const lastPostIndex = currentPage * POSTS_PER_PAGE;
+//  const firstPostIndex = lastPostIndex - POSTS_PER_PAGE;
+//  let campers = null;
+//  let totalPages = 0;
+
+//  const location = useLocation();
+//  const currentPath = location.pathname.split('/')[1];
+
+//  if (currentPath === 'catalog') {
+//    campers = useSelector(selectCampers);
+//    useEffect(() => {
+//      dispatch(getTotalCountAdverts());
+//    }, []);
+
+//    useEffect(() => {
+//      dispatch(getAdverts(currentPage));
+//    }, [currentPage]);
+
+//    totalPages = useSelector(selectTotalCountAdverts);
+//  } else {
+//    campers = useSelector(selectFavorites);
+//    totalPages = campers.length;
+//  }
+
+// if (currentPath === 'catalog') {
+//      campersAll = useSelector(selectCampers);
+//   useEffect(() => {
+//     dispatch(getAllAdverts());
+//   }, []);
+
+//   campersCurrent = campersAll.slice(firstPostIndex, lastPostIndex);
+//   totalPages = campersAll.length;
+// } else {
+//   campersCurrent = useSelector(selectFavorites);
+//   totalPages = campersCurrent.length;
+// }
+
+// {
+//   campersCurrent && (
+//     <ul className={css.campersList}>
+//       {campersCurrent.map(camper => (
+//         <li key={camper._id}>
+//           <CamperItem
+//             camper={camper}
+//             toggleHeartClick={toggleHeartClick}
+//             isFavorite={favs.includes(camper._id)}
+//           />
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// }

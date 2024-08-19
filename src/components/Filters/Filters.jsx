@@ -4,8 +4,14 @@ import sprite from '../../assets/icons/icons.svg';
 import { useForm } from 'react-hook-form';
 
 import css from './Filters.module.css';
+import { resetFilter, selectFilter, setFilter } from '../../redux/filtersSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import clsx from 'clsx';
 
 const Filters = () => {
+  const dispatch = useDispatch();
+  const filterState = useSelector(selectFilter);
+
   const [location, setLocation] = useState('');
   const handleChangeLocation = event => {
     setLocation(event.target.value);
@@ -13,12 +19,18 @@ const Filters = () => {
 
   const { register, handleSubmit, watch, reset } = useForm();
   const onSubmit = data => {
-    console.log(data);
+    dispatch(setFilter(data));
+    console.log('filter form data: ', data);
+  };
+
+  const handleResetBtn = () => {
+    dispatch(resetFilter());
+    reset();
   };
 
   return (
     <div className={css.filtersContainer}>
-      <label className={css.locationLabel}>
+      {/* <label className={css.locationLabel}>
         Location
         <input
           onChange={handleChangeLocation}
@@ -29,92 +41,12 @@ const Filters = () => {
         <svg className={css.iconMap} width="18" height="20">
           <use href={`${sprite}#icon-map-pin`} />
         </svg>
-      </label>
+      </label> */}
 
       <p className={css.filtersTitle}>Filters</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className={css.filterForm}>
-        <div className={css.equipmentFilterWrap}>
-          <p className={css.vehicleFilterTitle}>Vehicle equipment</p>
-
-          <div className={css.equipmentFilter}>
-            <label className={css.checkboxSquare}>
-              <input
-                type="checkbox"
-                {...register('equipment')}
-                value={'AC'}
-                className={css.hiddenCheckbox}
-              />
-              <span className={css.customCheckbox}>
-                AC
-                <svg className={css.iconOption} width="28" height="24">
-                  <use href={`${sprite}#icon-ac`} />
-                </svg>
-              </span>
-            </label>
-
-            <label className={css.checkboxSquare}>
-              <input
-                type="checkbox"
-                {...register('equipment')}
-                value={'automatic'}
-                className={css.hiddenCheckbox}
-              />
-              <span className={css.customCheckbox}>
-                Automatic
-                <svg className={css.iconOption} width="28" height="24">
-                  <use href={`${sprite}#icon-automatic`} />
-                </svg>
-              </span>
-            </label>
-
-            <label className={css.checkboxSquare}>
-              <input
-                type="checkbox"
-                {...register('equipment')}
-                value={'kitchen'}
-                className={css.hiddenCheckbox}
-              />
-              <span className={css.customCheckbox}>
-                kitchen
-                <svg className={css.iconOption} width="28" height="24">
-                  <use href={`${sprite}#icon-Kitchen`} />
-                </svg>
-              </span>
-            </label>
-
-            <label className={css.checkboxSquare}>
-              <input
-                type="checkbox"
-                {...register('equipment')}
-                value={'TV'}
-                className={css.hiddenCheckbox}
-              />
-              <span className={css.customCheckbox}>
-                TV
-                <svg className={css.iconOption} width="28" height="24">
-                  <use href={`${sprite}#icon-tv`} />
-                </svg>
-              </span>
-            </label>
-
-            <label className={css.checkboxSquare}>
-              <input
-                type="checkbox"
-                {...register('equipment')}
-                value={'toilet'}
-                className={css.hiddenCheckbox}
-              />
-              <span className={css.customCheckbox}>
-                Shower/WC
-                <svg className={css.iconOption} width="28" height="24">
-                  <use href={`${sprite}#icon-shower`} />
-                </svg>
-              </span>
-            </label>
-          </div>
-        </div>
-
+        {/* *************** vehicleType ****************  */}
         <div className={css.typeFilterWrap}>
           <p className={css.vehicleFilterTitle}>Vehicle type</p>
 
@@ -123,14 +55,18 @@ const Filters = () => {
               <input
                 type="radio"
                 {...register('vehicleType')}
-                value={'van'}
+                value={'panelTruck'}
                 className={css.hiddenCheckbox}
               />
-              <span className={css.customCheckbox}>
-                Van
+              <span
+                className={clsx(css.customCheckbox, {
+                  [css.active]: filterState.vehicleType === 'panelTruck',
+                })}
+              >
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-camper-van`} />
                 </svg>
+                Panel Truck
               </span>
             </label>
 
@@ -141,11 +77,15 @@ const Filters = () => {
                 value={'fullyIntegrated'}
                 className={css.hiddenCheckbox}
               />
-              <span className={css.customCheckbox}>
-                FullyIntegrated
+              <span
+                className={clsx(css.customCheckbox, {
+                  [css.active]: filterState.vehicleType === 'fullyIntegrated',
+                })}
+              >
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-camper-fully`} />
                 </svg>
+                Fully Integrated
               </span>
             </label>
 
@@ -156,11 +96,78 @@ const Filters = () => {
                 value={'alcove'}
                 className={css.hiddenCheckbox}
               />
-              <span className={css.customCheckbox}>
-                Alcove
+              <span
+                className={clsx(css.customCheckbox, {
+                  [css.active]: filterState.vehicleType === 'alcove',
+                })}
+              >
                 <svg className={css.iconOption} width="28" height="24">
                   <use href={`${sprite}#icon-camper-alcove`} />
                 </svg>
+                Alcove
+              </span>
+            </label>
+          </div>
+        </div>
+        {/* ************** equipment ********************  */}
+        <div className={css.equipmentFilterWrap}>
+          <p className={css.vehicleFilterTitle}>Vehicle equipment</p>
+
+          <div className={css.equipmentFilter}>
+            <label className={css.checkboxSquare}>
+              <input
+                type="checkbox"
+                {...register('equipment')}
+                value={'kitchen'}
+                className={css.hiddenCheckbox}
+              />
+              <span
+                className={`${css.customCheckbox} ${
+                  filterState.equipment.includes('kitchen') ? css.active : ''
+                }`}
+              >
+                <svg className={css.iconOption} width="28" height="24">
+                  <use href={`${sprite}#icon-Kitchen`} />
+                </svg>
+                Kitchen
+              </span>
+            </label>
+
+            <label className={css.checkboxSquare}>
+              <input
+                type="checkbox"
+                {...register('equipment')}
+                value={'toilet'}
+                className={css.hiddenCheckbox}
+              />
+              <span
+                className={`${css.customCheckbox} ${
+                  filterState.equipment.includes('toilet') ? css.active : ''
+                }`}
+              >
+                <svg className={css.iconOption} width="28" height="24">
+                  <use href={`${sprite}#icon-shower`} />
+                </svg>
+                Shower/WC
+              </span>
+            </label>
+
+            <label className={css.checkboxSquare}>
+              <input
+                type="checkbox"
+                {...register('equipment')}
+                value={'TV'}
+                className={css.hiddenCheckbox}
+              />
+              <span
+                className={`${css.customCheckbox} ${
+                  filterState.equipment.includes('TV') ? css.active : ''
+                }`}
+              >
+                <svg className={css.iconOption} width="28" height="24">
+                  <use href={`${sprite}#icon-tv`} />
+                </svg>
+                TV
               </span>
             </label>
           </div>
@@ -171,13 +178,12 @@ const Filters = () => {
           <option value="0">0 - 1</option>
           <option value="1">1 - 100</option>
         </select> */}
-
         <div className={css.filterBtns}>
           <button type="submit" className="btn red">
             Search
           </button>
 
-          <button type="button" onClick={() => reset()} className="btn white">
+          <button type="button" onClick={handleResetBtn} className="btn white">
             Clear Filter
           </button>
         </div>
@@ -187,3 +193,33 @@ const Filters = () => {
 };
 
 export default Filters;
+
+// <label className={css.checkboxSquare}>
+//   <input
+//     type="checkbox"
+//     {...register('equipment')}
+//     value={'AC'}
+//     className={css.hiddenCheckbox}
+//   />
+//   <span className={css.customCheckbox}>
+//     <svg className={css.iconOption} width="28" height="24">
+//       <use href={`${sprite}#icon-ac`} />
+//     </svg>
+//     AC
+//   </span>
+// </label>;
+
+// <label className={css.checkboxSquare}>
+//   <input
+//     type="checkbox"
+//     {...register('equipment')}
+//     value={'automatic'}
+//     className={css.hiddenCheckbox}
+//   />
+//   <span className={css.customCheckbox}>
+//     <svg className={css.iconOption} width="28" height="24">
+//       <use href={`${sprite}#icon-automatic`} />
+//     </svg>
+//     Automatic
+//   </span>
+// </label>;

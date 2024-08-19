@@ -7,8 +7,9 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getCamperById } from './redux/campers/campersOperation';
+import { getAllAdverts, getCamperById } from './redux/campers/campersOperation';
 import { addFavorite } from './redux/favorites';
+import FiltersPage from './pages/FiltersPage';
 
 Modal.setAppElement('#root');
 
@@ -18,6 +19,8 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    dispatch(getAllAdverts());
+
     const storedItems = JSON.parse(localStorage.getItem('favorites')) || [];
 
     if (storedItems.length > 0) {
@@ -46,6 +49,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          {/* <Route path="/filters" element={<FiltersPage />} /> */}
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

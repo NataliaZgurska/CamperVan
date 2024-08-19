@@ -44,12 +44,12 @@
 
 /********** filtersTitle ********************/
 .filtersTitle {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
   color: #475467;
 
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 /***************** filterForm *************************/
@@ -59,7 +59,7 @@
 }
 
 .vehicleFilterTitle {
-  height: 48px;
+  height: 38px;
   font-weight: 600;
   font-size: 20px;
   line-height: 120%;
@@ -72,15 +72,15 @@
 .typeFilterWrap {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .equipmentFilterWrap {
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 
 .typeFilterWrap {
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 .equipmentFilter {
   display: flex;
@@ -123,6 +123,10 @@
 
 .checkboxSquare input:checked + .customCheckbox {
   border: 1px solid red;
+}
+
+.customCheckbox.active {
+  border: 1px solid blue;
 }
 
 .iconOption {

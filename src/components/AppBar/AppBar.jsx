@@ -32,6 +32,11 @@ export const AppBar = () => {
               Favorites
             </NavLink>
           </li>
+          {/* <li>
+            <NavLink to="/filters" className={getNavLinkClassName}>
+              Filters
+            </NavLink>
+          </li> */}
         </ul>
       </nav>
 

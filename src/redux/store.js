@@ -14,12 +14,14 @@ import {
 } from 'redux-persist';
 
 import { campersReducer } from './campers/campersSlice';
+import { filtersReducer } from './filtersSlice';
 
 export const store = configureStore({
   reducer: {
     campers: campersReducer,
     modal: modalReducer,
     favorite: favoriteReducer,
+    filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

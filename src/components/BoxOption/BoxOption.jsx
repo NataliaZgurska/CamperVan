@@ -4,12 +4,18 @@ import css from './BoxOption.module.css';
 import { useSelector } from 'react-redux';
 
 const BoxOption = ({ camper }) => {
-  const { adults, transmission, engine, details } = camper;
+  const { adults, transmission, engine, details, form } = camper;
   const modalIsActive = useSelector(state => state.modal.modalIsActive);
 
   return (
     <div className={css.boxOptionContainer}>
       <ul className={css.boxOptionList}>
+        <li className={css.boxOption}>
+          <svg className="iconOption" width="24" height="24">
+            <use href={`${sprite}#icon-camper-van`} />
+          </svg>
+          <p>{form}</p>
+        </li>
         <li className={css.boxOption}>
           <svg className="iconOption" width="24" height="24">
             <use href={`${sprite}#icon-Users`} />
@@ -28,6 +34,7 @@ const BoxOption = ({ camper }) => {
           </svg>
           <p>{engine}</p>
         </li>
+
         {details.kitchen > 0 && (
           <li className={css.boxOption}>
             <svg className="iconOption" width="20" height="20">
@@ -36,19 +43,19 @@ const BoxOption = ({ camper }) => {
             <p>Kitchen</p>
           </li>
         )}
-        <li className={css.boxOption}>
+        {/* <li className={css.boxOption}>
           <svg className="iconOption" width="26" height="27">
             <use href={`${sprite}#icon-bed`} />
           </svg>
           <p>{details.beds} beds</p>
-        </li>
+        </li> */}
 
-        {details.AC > 0 && (
+        {details.toilet > 0 && (
           <li className={css.boxOption}>
             <svg className="iconOption" width="28" height="24">
-              <use href={`${sprite}#icon-ac`} />
+              <use href={`${sprite}#icon-shower`} />
             </svg>
-            <p>AC</p>
+            <p>toilet</p>
           </li>
         )}
 
